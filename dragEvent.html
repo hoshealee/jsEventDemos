@@ -1,0 +1,41 @@
+<!-- 拖拽时，鼠标经历三个事件：
+
+	onmousedown 鼠标按下时，存储当前鼠标距离拖拽对象左上角的距离
+	onmousemove 鼠标移动时，根据鼠标移动的距离移动拖拽对象的位置
+	onmouseup 鼠标抬起时，停止拖拽 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{width: 100px;height: 100px;background-color: purple;position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div id="div"></div>
+</body>
+<script>
+	window.onload = function () {
+		var oDiv = document.getElementById('div');
+		oDiv.onmousedown = function (ev) {
+			var oEvent = ev || event;
+			var oX = oEvent.clientX - oDiv.offsetLeft;
+			var oY = oEvent.clientY - oDiv.offsetTop;
+			//当鼠标开始移动，重新设置div的位置
+			document.onmousemove = function (ev) {
+				var oEvent = ev || event;
+				oDiv.style.left = oEvent.clientX - oX + 'px';
+				oDiv.style.top = oEvent.clientY - oY + 'px';
+			};
+			document.onmouseup = function (ev) {
+				document.onmousemove = null;
+				document.onmouseup = null;
+			}	
+		};
+
+
+	}
+</script>
+</html>

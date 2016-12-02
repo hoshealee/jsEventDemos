@@ -1,0 +1,23 @@
+<!-- keyCode 获取用户按下键盘的哪个键盘
+键盘控制DIV的移动
+ctrlKey 返回 boolean值，按下时为true
+shiftKey 返回 boolean值，按下时为true
+altKey 返回 boolean值，按下时为true
+示例将用户按的按键提示出来：-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//按动键盘时触发事件
+		document.onkeydown = function (ev) {
+			var oEvent = ev || event;
+			console.log(oEvent.keyCode);
+		}
+	</script>
+</body>
+</html>

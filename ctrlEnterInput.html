@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<textarea id="text1" cols="10" rows="1"></textarea>
+	<br>
+	<input type="text" id="text2">
+	<input type="button" value="提交" id="btn">
+</body>
+<script>
+	window.onload = function () {
+		var oText1 = document.getElementById('text1');
+		var oText2 = document.getElementById('text2');
+		var oBtn = document.getElementById('btn');
+		function submitText() {
+			var text = oText2.value;
+			oText2.value = '';
+			oText1.value += text;
+		}
+		oBtn.onclick = submitText;
+		oText2.onkeydown = function (ev) {
+			var oEvent = event || ev;
+
+			//同时按下ctrl ＋ enter；
+			if (oEvent.keyCode === 13 && oEvent.ctrlKey) {
+				submitText();
+			}	
+		};
+
+	}
+</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.div{width: 10px;height: 10px;background-color: red;position: absolute;}
+	</style>
+</head>
+<body>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+	<div class="div"></div>
+</body>
+<script>
+	var divs = document.getElementsByClassName('div');
+	document.onmousemove = function (ev) {
+		var oEvent = ev || event;
+		divs[0].style.left = oEvent.clientX + 'px';
+		divs[0].style.top = oEvent.clientY + 'px';
+		for(var i=divs.length-1;i>0;i--){
+			divs[i].style.left = divs[i-1].style.left;
+			divs[i].style.top = divs[i-1].style.top;
+		}
+		//当块很多时，设置位置就会滞后，会造成不同的块出现在之前的轨迹上
+	}
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!-- 只要将默认的事件return false，就可以组织默认行为的执行。
+
+示例：自定义右键菜单：默认的右键菜单是系统提供的选项，我们可以阻止默认的右菜单，来自定义新右键菜单样式 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul {
+			list-style-type: none;
+			display: none;
+			position: absolute;
+		}
+
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<ul id="ul1">
+		<li>HOME</li>
+		<li>LOGIN</li>
+		<li>REGISTER</li>
+	</ul>
+</body>
+<script>
+	document.oncontextmenu = function (ev) {
+		var oUl = document.getElementById('ul1');
+		var oEvent = ev || event;
+		oUl.style.display = 'block';
+		oUl.style.left = oEvent.clientX + 'px';
+		oUl.style.top = oEvent.clientY + 'px';
+		return false;
+	}
+
+	document.onclick = function (ev) {
+		var oUl = document.getElementById('ul1');
+		oUl.style.display = 'none';
+	}
+
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div id="div"></div>
+	<script>
+		
+	document.onclick = function (ev) {
+		//获取距离文档顶部的高度
+		var oScrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+		//获取距离文档左边的宽度
+		var oScrollLeft = document.documentElement.scrollLeft||document.body.scrollLeft;
+		//获取鼠标事件
+		var oEvent = event||ev;
+		//获取到div
+		var oDiv = document.getElementById('div');
+		//设置div的位置
+		oDiv.style.left = oEvent.clientX + oScrollLeft + 'px';
+		oDiv.style.top = oEvent.clientY + oScrollTop + 'px';
+	}
+
+	</script>
+</body>
+</html>

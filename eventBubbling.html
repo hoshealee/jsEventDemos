@@ -1,0 +1,42 @@
+
+<!-- 子标签发生事件后，向父级发送该事件，一直追溯带document。如：点击一个嵌套在body中的button，则该button的onclick事件也会传递给body、document中，触发他们的onclick里触发的函数. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="显示" id="btn">
+	<div id="div"></div>
+</body>
+<script>
+	window.onload = function () {
+		var oBtn = document.getElementById('btn');
+		var oDiv = document.getElementById('div');
+		oBtn.onclick = function (e) {
+			oDiv.style.display = 'none';
+			console.log('btn 被点击了');
+			var oEvent = e || event;
+			//取消事件冒泡
+			oEvent.cancelBubble = true;
+		};
+		document.onclick = function () {
+			oDiv.style.display = 'block';
+			console.log('document 被点击了');	
+		};
+
+
+	}
+</script>
+</html>
